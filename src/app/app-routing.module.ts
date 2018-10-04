@@ -4,6 +4,7 @@ import {CdkCoercionModule} from './coercion/cdk-coercion.module';
 import {RouterModule, Routes} from '@angular/router';
 import {CdkLayoutModule} from './layout/cdk-layout.module';
 import {KeyCodesModule} from './keycodes/key-codes.module';
+import {CdkAccessibilityModule} from './accessibility/cdk-accessibility.module';
 
 const appRoutes: Routes = [
     {
@@ -15,6 +16,9 @@ const appRoutes: Routes = [
     }, {
         path: 'keycodes',
         loadChildren: () => KeyCodesModule
+    }, {
+        path: 'accessibility',
+        loadChildren: () => CdkAccessibilityModule
     }, {
         path: '',
         redirectTo: '/coercion',

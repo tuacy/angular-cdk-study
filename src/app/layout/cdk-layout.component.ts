@@ -26,7 +26,7 @@ export class CdkLayoutComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
 
-        // 对于简单的一次性匹配，可以使用isMatching方法。如果组件初始化时窗口至少为40rem高，则输出到控制台
+        // 简单的一次性匹配，可以使用isMatching方法。如果组件初始化时窗口至少为40rem高，则输出到控制台
         if (this.breakpointObserver.isMatched('(min-height: 40rem)')) {
             console.log('Enough room!');
         }
