@@ -1,0 +1,14 @@
+<!--从左到右-->
+<p dir="LTR">
+    bidi works!
+</p>
+<!--从右到左-->
+<p dir="RTL">
+    bidi works!
+</p>
+<!--可以控制方向-->
+<p [dir]="dir">
+    bidi works!
+</p>
+
+<button (click)="switchDir()">切换方向</button>

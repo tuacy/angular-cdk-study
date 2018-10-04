@@ -5,6 +5,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {CdkLayoutModule} from './layout/cdk-layout.module';
 import {KeyCodesModule} from './keycodes/key-codes.module';
 import {CdkAccessibilityModule} from './accessibility/cdk-accessibility.module';
+import {CdkBidiModule} from './bidi/cdk-bidi.module';
+import {CdkScrollingModule} from './scrolling/cdk-scrolling.module';
 
 const appRoutes: Routes = [
     {
@@ -19,6 +21,12 @@ const appRoutes: Routes = [
     }, {
         path: 'accessibility',
         loadChildren: () => CdkAccessibilityModule
+    },  {
+        path: 'bidi',
+        loadChildren: () => CdkBidiModule
+    },  {
+        path: 'scrolling',
+        loadChildren: () => CdkScrollingModule
     }, {
         path: '',
         redirectTo: '/coercion',

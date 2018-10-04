@@ -9,6 +9,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {KeyCodesModule} from './keycodes/key-codes.module';
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import {KeyCodesModule} from './keycodes/key-codes.module';
         CdkCoercionModule,
         CdkLayoutModule,
         KeyCodesModule,
+        ScrollDispatchModule,
         AppRoutingModule
     ],
     providers: [],
