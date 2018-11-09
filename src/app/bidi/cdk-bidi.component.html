@@ -3,9 +3,15 @@
     bidi works!
 </p>
 <!--从右到左-->
-<p dir="RTL">
+<p dir="RTL" style="background-color: #444444">
     bidi works!
 </p>
+<div style="background-color: #039be5">
+
+    <div STYLE="display: inline-block; width: 100px" dir="RTL">abac</div>
+    <div style="display: inline-block; width: 100px" DIR="RTL">ccccc</div>
+
+</div>
 <!--可以控制方向-->
 <p [dir]="dir">
     bidi works!

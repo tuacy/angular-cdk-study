@@ -7,6 +7,7 @@ import {KeyCodesModule} from './keycodes/key-codes.module';
 import {CdkAccessibilityModule} from './accessibility/cdk-accessibility.module';
 import {CdkBidiModule} from './bidi/cdk-bidi.module';
 import {CdkScrollingModule} from './scrolling/cdk-scrolling.module';
+import {CdkLPortalModule} from './portal/cdk-portal.module';
 
 const appRoutes: Routes = [
     {
@@ -27,7 +28,10 @@ const appRoutes: Routes = [
     },  {
         path: 'scrolling',
         loadChildren: () => CdkScrollingModule
-    }, {
+    },  {
+        path: 'portal',
+        loadChildren: () => CdkLPortalModule
+    },{
         path: '',
         redirectTo: '/coercion',
         pathMatch: 'full'

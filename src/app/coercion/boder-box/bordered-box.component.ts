@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input} from '@angular/core';
 import {coerceCssPixelValue} from '@angular/cdk/coercion';
 
 @Component({
