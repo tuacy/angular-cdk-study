@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
-import {KeyCodesComponent} from './key-codes.component';
+import {RouterModule, Routes} from "@angular/router";
+import {CdkOverlayComponent} from "./cdk-overlay.component";
 
 const routes: Routes = [
     {
         path: '',
-        component: KeyCodesComponent
+        component: CdkOverlayComponent
     }
 ];
 
@@ -20,4 +20,4 @@ const routes: Routes = [
     ],
     providers: []
 })
-export class KeyCodesRoutingModule { }
+export class CdkOverlayRoutingModule { }

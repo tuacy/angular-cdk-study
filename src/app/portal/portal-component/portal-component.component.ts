@@ -1,6 +1,14 @@
-import {ApplicationRef, Component, ComponentFactoryResolver, Injector, OnInit} from '@angular/core';
+import {
+    ApplicationRef,
+    Component,
+    ComponentFactoryResolver,
+    ElementRef,
+    Injector,
+    OnInit,
+    ViewContainerRef
+} from '@angular/core';
 import {ComponentPortal, DomPortalHost} from '@angular/cdk/portal';
-import {ChildComponent} from '../child-component/child.component';
+import {PortalChildComponent} from '../portal-child-component/portal-child.component';
 
 @Component({
     selector: 'app-portal-component',
@@ -8,29 +16,26 @@ import {ChildComponent} from '../child-component/child.component';
 })
 export class PortalComponentComponent implements OnInit {
     private portalHost: DomPortalHost;
-    private portal: ComponentPortal<ChildComponent>;
 
     constructor(
-        private componentFactoryResolver: ComponentFactoryResolver,
+        private elementRef: ElementRef,
         private injector: Injector,
         private appRef: ApplicationRef,
+        private viewContainerRef: ViewContainerRef,
+        private componentFactoryResolver: ComponentFactoryResolver,
     ) {
     }
 
     ngOnInit() {
-        // Create a portalHost from a DOM element
         this.portalHost = new DomPortalHost(
-            document.querySelector('#portalComponentChild'),
+            this.elementRef.nativeElement as HTMLElement,
             this.componentFactoryResolver,
             this.appRef,
             this.injector
         );
-
-        // Locate the component factory for the HeaderComponent
-        this.portal = new ComponentPortal(ChildComponent);
-
-        // Attach portal to host
-        this.portalHost.attach(this.portal);
+        // 关于组件传递参数，我们将在后面讲到
+        const templatePortal = new ComponentPortal(PortalChildComponent);
+        this.portalHost.attach(templatePortal);
     }
 
 }

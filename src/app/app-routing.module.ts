@@ -3,11 +3,12 @@ import {CommonModule} from '@angular/common';
 import {CdkCoercionModule} from './coercion/cdk-coercion.module';
 import {RouterModule, Routes} from '@angular/router';
 import {CdkLayoutModule} from './layout/cdk-layout.module';
-import {KeyCodesModule} from './keycodes/key-codes.module';
+import {CdkKeyCodesModule} from './keycodes/cdk-key-codes.module';
 import {CdkAccessibilityModule} from './accessibility/cdk-accessibility.module';
 import {CdkBidiModule} from './bidi/cdk-bidi.module';
 import {CdkScrollingModule} from './scrolling/cdk-scrolling.module';
 import {CdkLPortalModule} from './portal/cdk-portal.module';
+import {CdkOverlayModule} from "./overlay/cdk-overlay.module";
 
 const appRoutes: Routes = [
     {
@@ -18,20 +19,23 @@ const appRoutes: Routes = [
         loadChildren: () => CdkLayoutModule
     }, {
         path: 'keycodes',
-        loadChildren: () => KeyCodesModule
+        loadChildren: () => CdkKeyCodesModule
     }, {
         path: 'accessibility',
         loadChildren: () => CdkAccessibilityModule
-    },  {
+    }, {
         path: 'bidi',
         loadChildren: () => CdkBidiModule
-    },  {
+    }, {
         path: 'scrolling',
         loadChildren: () => CdkScrollingModule
-    },  {
+    }, {
         path: 'portal',
         loadChildren: () => CdkLPortalModule
-    },{
+    }, {
+        path: 'overlay',
+        loadChildren: () => CdkOverlayModule
+    }, {
         path: '',
         redirectTo: '/coercion',
         pathMatch: 'full'

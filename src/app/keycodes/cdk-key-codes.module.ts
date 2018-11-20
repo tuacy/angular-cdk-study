@@ -1,18 +1,18 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {KeyCodesComponent} from './key-codes.component';
+import {CdkKeyCodesComponent} from './cdk-key-codes.component';
 import {RouterModule} from '@angular/router';
-import {KeyCodesRoutingModule} from './key-codes-routing.module';
+import {CdkKeyCodesRoutingModule} from './cdk-key-codes-routing.module';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
-        KeyCodesRoutingModule
+        CdkKeyCodesRoutingModule
     ],
     declarations: [
-        KeyCodesComponent
+        CdkKeyCodesComponent
     ]
 })
-export class KeyCodesModule {
+export class CdkKeyCodesModule {
 }

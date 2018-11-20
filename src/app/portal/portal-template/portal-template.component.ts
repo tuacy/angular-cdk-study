@@ -1,4 +1,15 @@
-import {Component, Injector, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
+import {
+    ApplicationRef,
+    Component,
+    ComponentFactoryResolver,
+    ElementRef,
+    Injector,
+    OnInit,
+    TemplateRef,
+    ViewChild,
+    ViewContainerRef
+} from '@angular/core';
+import {DomPortalHost, TemplatePortal} from "@angular/cdk/portal";
 
 @Component({
     selector: 'app-portal-template',
@@ -10,25 +21,34 @@ import {Component, Injector, OnInit, TemplateRef, ViewChild, ViewContainerRef} f
 })
 export class PortalTemplateComponent implements OnInit {
 
-    private componentRef;
+    private portalHost: DomPortalHost;
     @ViewChild('testTemplate') testTemplate: TemplateRef<any>;
 
     constructor(
+        private elementRef: ElementRef,
         private injector: Injector,
+        private appRef: ApplicationRef,
         private viewContainerRef: ViewContainerRef,
+        private componentFactoryResolver: ComponentFactoryResolver,
     ) {
     }
 
     ngOnInit() {
-        // Locate an element that exists on the page
-        const headerElement = document.querySelector('#portalTemplateChild');
-        // Locate the component factory for the HeaderComponent
-        const embeddedView = this.viewContainerRef.createEmbeddedView(
-            this.testTemplate,
-            {$implicit: 'Bob'},
+
+        this.portalHost = new DomPortalHost(
+            this.elementRef.nativeElement as HTMLElement,
+            this.componentFactoryResolver,
+            this.appRef,
+            this.injector
         );
-        // Place element in correct location in DOM
-        embeddedView.rootNodes.forEach(rootNode => headerElement.appendChild(rootNode));
+        const templatePortal = new TemplatePortal(
+            this.testTemplate,
+            this.viewContainerRef,
+            {
+                $implicit: "ng template 传递数据",
+            }
+        );
+        this.portalHost.attach(templatePortal);
     }
 
 }
