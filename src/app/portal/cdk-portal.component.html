@@ -2,3 +2,26 @@
 <app-portal-component></app-portal-component>
 <app-portal-template></app-portal-template>
 <button appToolTip tooltipText="This is a tooltip">tool tip</button>
+<br>
+<br>
+<!-- Portal显示的位置 -->
+<div class="demo-portal-host">
+    <ng-template cdkPortalHost [cdkPortalOutlet]="selectedPortal" (attached)="onPortalAttached()"></ng-template>
+</div>
+<br>
+<button (click)="cdkPortalFirst()">
+    第一个cdkPortal
+</button>
+<button style="margin-left: 10px" (click)="cdkPortalLast()">
+    最后一个cdkPortal
+</button>
+<button style="margin-left: 10px" (click)="cdkPortalComponent()">
+    portal组件
+</button>
+<ng-template cdkPortal>
+    <h2>ng-template 指定的内容(first)</h2>
+</ng-template>
+
+<div *cdkPortal>
+    <h2>ng-template 指定的内容(last)</h2>
+</div>

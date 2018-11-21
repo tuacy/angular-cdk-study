@@ -50,7 +50,7 @@ export class ToolTipDirective implements OnInit {
 
     private createContainerTemplate() {
         this.tooltipPortalHost = new DomPortalHost(
-            (this.elementRef.nativeElement as HTMLElement).parentElement,
+            (this.elementRef.nativeElement as HTMLElement),
             this.componentFactoryResolver,
             this.appRef,
             this.injector
