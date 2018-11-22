@@ -1,0 +1,11 @@
+<h1>通过 cdk observers 可以监听dom变化</h1>
+
+<!-- 通过ContentObserver监听div内容的变化 -->
+<div #observerSource>
+    {{content}}
+</div>
+<br>
+<!-- 通过指令监听ng-content内容变化 -->
+<app-observers-child>
+    {{content}}
+</app-observers-child>

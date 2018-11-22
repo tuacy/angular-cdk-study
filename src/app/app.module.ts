@@ -8,10 +8,12 @@ import {AppRoutingModule} from './app-routing.module';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {CdkKeyCodesModule} from './keycodes/cdk-key-codes.module';
-import {CdkOverlayModule} from "./overlay/cdk-overlay.module";
-import {CdkScrollingModule} from "./scrolling/cdk-scrolling.module";
-import { TipDirective } from './tip/tip.directive';
-import { TipComponent } from './tip/tip.component';
+import {CdkOverlayModule} from './overlay/cdk-overlay.module';
+import {CdkScrollingModule} from './scrolling/cdk-scrolling.module';
+import {TipDirective} from './tip/tip.directive';
+import {TipComponent} from './tip/tip.component';
+import {CdkPlatformModule} from './platform/cdk-platform.module';
+import {CdkObserversModule} from './observers/cdk-observers.module';
 
 @NgModule({
     declarations: [
@@ -28,6 +30,8 @@ import { TipComponent } from './tip/tip.component';
         CdkKeyCodesModule,
         CdkScrollingModule,
         CdkOverlayModule,
+        CdkPlatformModule,
+        CdkObserversModule,
         AppRoutingModule
     ],
     providers: [],

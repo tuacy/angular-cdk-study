@@ -8,8 +8,11 @@ import {CdkAccessibilityModule} from './accessibility/cdk-accessibility.module';
 import {CdkBidiModule} from './bidi/cdk-bidi.module';
 import {CdkScrollingModule} from './scrolling/cdk-scrolling.module';
 import {CdkLPortalModule} from './portal/cdk-portal.module';
-import {CdkOverlayModule} from "./overlay/cdk-overlay.module";
+import {CdkOverlayModule} from './overlay/cdk-overlay.module';
 import {TipComponent} from './tip/tip.component';
+import {CdkPlatformComponent} from './platform/cdk-platform.component';
+import {CdkPlatformModule} from './platform/cdk-platform.module';
+import {CdkObserversModule} from './observers/cdk-observers.module';
 
 const appRoutes: Routes = [
     {
@@ -36,7 +39,13 @@ const appRoutes: Routes = [
     }, {
         path: 'overlay',
         loadChildren: () => CdkOverlayModule
-    },  {
+    }, {
+        path: 'platform',
+        loadChildren: () => CdkPlatformModule
+    }, {
+        path: 'observers',
+        loadChildren: () => CdkObserversModule
+    }, {
         path: 'tip',
         component: TipComponent
     }, {

@@ -1,0 +1,5 @@
+<!-- 通过cdkObserveContent来监听<ng-content>內容的變化 -->
+<!-- 使用debounce避免大量的变更 -->
+<div (cdkObserveContent)="projectContentChanged($event)">
+    <ng-content></ng-content>
+</div>
