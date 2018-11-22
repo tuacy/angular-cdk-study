@@ -9,6 +9,7 @@ import {CdkBidiModule} from './bidi/cdk-bidi.module';
 import {CdkScrollingModule} from './scrolling/cdk-scrolling.module';
 import {CdkLPortalModule} from './portal/cdk-portal.module';
 import {CdkOverlayModule} from "./overlay/cdk-overlay.module";
+import {TipComponent} from './tip/tip.component';
 
 const appRoutes: Routes = [
     {
@@ -35,6 +36,9 @@ const appRoutes: Routes = [
     }, {
         path: 'overlay',
         loadChildren: () => CdkOverlayModule
+    },  {
+        path: 'tip',
+        component: TipComponent
     }, {
         path: '',
         redirectTo: '/coercion',

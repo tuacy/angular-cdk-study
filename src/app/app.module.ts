@@ -10,10 +10,14 @@ import {RouterModule} from '@angular/router';
 import {CdkKeyCodesModule} from './keycodes/cdk-key-codes.module';
 import {CdkOverlayModule} from "./overlay/cdk-overlay.module";
 import {CdkScrollingModule} from "./scrolling/cdk-scrolling.module";
+import { TipDirective } from './tip/tip.directive';
+import { TipComponent } from './tip/tip.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        TipDirective,
+        TipComponent
     ],
     imports: [
         BrowserModule,
