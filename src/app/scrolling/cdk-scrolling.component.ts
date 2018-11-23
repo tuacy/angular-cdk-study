@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {CdkScrollable, ScrollDispatcher} from '@angular/cdk/overlay';
+import {CdkScrollable, ScrollDispatcher, ViewportRuler} from '@angular/cdk/overlay';
 
 @Component({
     selector: 'app-cdk-scrolling',
@@ -11,7 +11,7 @@ export class CdkScrollingComponent implements OnInit, AfterViewInit {
     @ViewChild('scrollingParent')
     childDiv: ElementRef;
 
-    constructor(private scrollDispatcher: ScrollDispatcher, private elementRef: ElementRef) {
+    constructor(private scrollDispatcher: ScrollDispatcher, private viewPortRuler: ViewportRuler) {
     }
 
     ngOnInit() {
@@ -21,6 +21,21 @@ export class CdkScrollingComponent implements OnInit, AfterViewInit {
                 console.log(scrollable.getElementRef().nativeElement);
             }
         });
+
+        /**
+         * ViewportRuler 用来监听窗口的大小
+         */
+        // { width, height }
+        console.log(this.viewPortRuler.getViewportSize());
+
+        // { bottom, height, left, right, top, width }
+        console.log(this.viewPortRuler.getViewportRect());
+
+        // { top, left }
+        console.log(this.viewPortRuler.getViewportScrollPosition());
+
+        // native resize event object
+        this.viewPortRuler.change().subscribe(resizeEvent => console.log(resizeEvent));
 
     }
 
@@ -35,5 +50,8 @@ export class CdkScrollingComponent implements OnInit, AfterViewInit {
                 console.log(scrollable.getElementRef().nativeElement);
             }
         });
+
+        // 获取ScrollDispatcher里面所有注册了scrolling的组件信息
+        console.log(this.scrollDispatcher.scrollContainers);
     }
 }
