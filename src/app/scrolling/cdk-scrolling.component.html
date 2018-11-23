@@ -1,3 +1,20 @@
-<div style="height: 10000px; background-color: #039be5" cdkScrollable>
-    cdk-layout works!
+<h1>cdk scrolling</h1>
+<!-- 通过cdkScrollable指令来监听节点的scrolling -->
+<div cdkScrollable class="scrolling-parent">
+    <div #scrollingParent class="scrolling-item">item 1</div>
+    <div class="scrolling-item">item 2</div>
+    <div class="scrolling-item">item 3</div>
 </div>
+<div  class="scrolling-parent">
+    <div class="scrolling-item">item 1</div>
+    <div class="scrolling-item">item 2</div>
+    <div class="scrolling-item">item 3</div>
+</div>
+<hr>
+<app-virtual-scroll></app-virtual-scroll>
+<hr>
+<app-virtual-scroll-data-source></app-virtual-scroll-data-source>
+<hr>
+<app-virtual-scroll-horizontal></app-virtual-scroll-horizontal>
+<hr>
+<app-virtual-scroll-strategies></app-virtual-scroll-strategies>
