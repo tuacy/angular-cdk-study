@@ -10,9 +10,9 @@ import {CdkScrollingModule} from './scrolling/cdk-scrolling.module';
 import {CdkLPortalModule} from './portal/cdk-portal.module';
 import {CdkOverlayModule} from './overlay/cdk-overlay.module';
 import {TipComponent} from './tip/tip.component';
-import {CdkPlatformComponent} from './platform/cdk-platform.component';
 import {CdkPlatformModule} from './platform/cdk-platform.module';
 import {CdkObserversModule} from './observers/cdk-observers.module';
+import {CdkDragDropModule} from './drag-drop/cdk-drag-drop.module';
 
 const appRoutes: Routes = [
     {
@@ -45,6 +45,9 @@ const appRoutes: Routes = [
     }, {
         path: 'observers',
         loadChildren: () => CdkObserversModule
+    }, {
+        path: 'dragDrop',
+        loadChildren: () => CdkDragDropModule
     }, {
         path: 'tip',
         component: TipComponent

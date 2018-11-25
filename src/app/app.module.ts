@@ -14,6 +14,7 @@ import {TipDirective} from './tip/tip.directive';
 import {TipComponent} from './tip/tip.component';
 import {CdkPlatformModule} from './platform/cdk-platform.module';
 import {CdkObserversModule} from './observers/cdk-observers.module';
+import {CdkDragDropModule} from './drag-drop/cdk-drag-drop.module';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import {CdkObserversModule} from './observers/cdk-observers.module';
         CdkOverlayModule,
         CdkPlatformModule,
         CdkObserversModule,
+        CdkDragDropModule,
         AppRoutingModule
     ],
     providers: [],

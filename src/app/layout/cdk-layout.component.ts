@@ -1,4 +1,4 @@
-import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints, BreakpointState, MediaMatcher} from '@angular/cdk/layout';
 
 @Component({
@@ -28,34 +28,36 @@ export class CdkLayoutComponent implements OnInit, OnDestroy {
 
         // 简单的一次性匹配，可以使用isMatching方法。如果组件初始化时窗口至少为40rem高，则输出到控制台
         if (this.breakpointObserver.isMatched('(min-height: 40rem)')) {
-            console.log('Enough room!');
+            console.log('窗口至少为40rem高!');
+        } else {
+            console.log('窗口没有40rem高!');
         }
 
-        // 如果窗口大小在小于500px且等于或者大于500px之间变化，则会将消息打印到控制台。
+        // 注意哦，不会一直回调哦，只会在第一次满足或者不满足条件的时候回调。
         this.breakpointObserver
             .observe(['(min-width: 500px)'])
             .subscribe((state: BreakpointState) => {
                 if (state.matches) {
-                    console.log('Viewport is 500px or over!');
+                    console.log('窗口宽度大于或者等于500px!');
                 } else {
-                    console.log('Viewport is getting smaller!');
+                    console.log('窗口不满足宽度大于或者等于500px!');
                 }
             });
 
-        // 也可以使用Breakpoints对象，而不是使用手写的媒体查询，它为我们提供了常见断点的键
+        // 也可以使用Breakpoints对象，而不是使用手写的媒体查询，它为我们提供了常见断点的键。如果多个参数，当有一个条件满足或者不满足的时候就会触发
         this.breakpointObserver
             .observe([Breakpoints.Small, Breakpoints.HandsetPortrait])
             .subscribe((state: BreakpointState) => {
                 if (state.matches) {
                     console.log(
-                        'Matches small viewport or handset in portrait mode'
+                        'Breakpoints.Small or Breakpoints.HandsetPortrait'
                     );
                 }
             });
 
 
         this.matcher = this.mediaMatcher.matchMedia('(min-width: 500px)');
-        this.matcher.addListener(this.myListener);
+        this.matcher.addListener(this.matchMediaListener);
 
         // // 在程序加载时判断当前设备是横屏还是竖屏
         // const isPortrait = window.matchMedia('(orientation: portrait)').matches;
@@ -72,10 +74,10 @@ export class CdkLayoutComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.matcher.removeListener(this.myListener);
+        this.matcher.removeListener(this.matchMediaListener);
     }
 
-    myListener(event) {
+    matchMediaListener(event) {
         console.log(event.matches ? 'match' : 'no match');
     }
 
