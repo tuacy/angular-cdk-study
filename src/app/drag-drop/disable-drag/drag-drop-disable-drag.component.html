@@ -1,9 +1,16 @@
 <h1>disable drag</h1>
 
 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-    <div
-            class="example-box"
-            *ngFor="let item of items"
-            cdkDrag
-            [cdkDragDisabled]="item.disabled">{{item.value}}</div>
+    <!-- cdkDragDisabled好像没有这个属性 -->
+    <ng-container *ngFor="let item of items">
+        <div
+                *ngIf="!item.disabled"
+                class="example-box"
+                cdkDrag>{{item.value}}</div>
+        <div
+                *ngIf="item.disabled"
+                class="example-box"
+                >{{item.value}}</div>
+    </ng-container>
+
 </div>

@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {CdkDrag} from "@angular/cdk/drag-drop";
 
 @Component({
-  selector: 'app-drag-drop-drop',
-  templateUrl: './drag-drop-drop.component.html',
-  styleUrls: ['./drag-drop-drop.component.less']
+    selector: 'app-drag-drop-drop',
+    templateUrl: './drag-drop-drop.component.html',
+    styleUrls: ['./drag-drop-drop.component.less']
 })
-export class DragDropDropComponent implements OnInit {
+export class DragDropDropComponent implements AfterViewInit {
 
-  constructor() { }
+    @ViewChild(CdkDrag) cdkDragDirective: CdkDrag;
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
+
+    ngAfterViewInit() {
+        console.log(this.cdkDragDirective.getPlaceholderElement());
+    }
 
 }
