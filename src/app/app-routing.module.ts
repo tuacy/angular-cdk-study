@@ -13,6 +13,7 @@ import {TipComponent} from './tip/tip.component';
 import {CdkPlatformModule} from './platform/cdk-platform.module';
 import {CdkObserversModule} from './observers/cdk-observers.module';
 import {CdkDragDropModule} from './drag-drop/cdk-drag-drop.module';
+import {CdkTextFieldModule} from "./text-field/cdk-text-field.module";
 
 const appRoutes: Routes = [
     {
@@ -48,6 +49,9 @@ const appRoutes: Routes = [
     }, {
         path: 'dragDrop',
         loadChildren: () => CdkDragDropModule
+    }, {
+        path: 'textField',
+        loadChildren: () => CdkTextFieldModule
     }, {
         path: 'tip',
         component: TipComponent

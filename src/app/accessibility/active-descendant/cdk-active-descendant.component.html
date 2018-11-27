@@ -1,0 +1,13 @@
+<h1>ActiveDescendantKeyManager使用</h1>
+<div class="form-group">
+    <input class="form-control" placeholder="Search..." (keyup)="onKeyDown($event)" #input>
+</div>
+
+<section class="list-group">
+    <app-item-active-option *ngFor="let user of users | filter: 'name' : input.value; index as index"
+                            [item]="user" class="list-group-item">
+        {{user.name}}
+    </app-item-active-option>
+</section>
+
+<p style="margin-top: 1em" *ngIf="model">Model: {{model}}</p>

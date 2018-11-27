@@ -1,20 +1,24 @@
 <!--从左到右-->
-<p dir="LTR">
-    bidi works!
+<p dir="LTR" style="border: solid 1px #ccc; color: red; padding: 10px">
+    从左到右排列
 </p>
 <!--从右到左-->
-<p dir="RTL" style="background-color: #444444">
-    bidi works!
+<p dir="RTL" style="border: solid 1px #ccc; color: red; padding: 10px">
+    从右到左排列
 </p>
-<div style="background-color: #039be5">
+<div dir="RTL" style="border: solid 1px #ccc; padding: 10px">
 
-    <div STYLE="display: inline-block; width: 100px" dir="RTL">abac</div>
-    <div style="display: inline-block; width: 100px" DIR="RTL">ccccc</div>
+    <div style="margin-left: 8px; margin-right: 8px; display: inline-block; width: 250px; background-color: #cccccc; padding: 4px; color: red"
+         dir="LTR">第一个位置--内容靠左
+    </div>
+    <div style="margin-left: 8px; margin-right: 8px; display: inline-block; width: 250px; background-color: #cccccc; padding: 4px; color: red"
+         dir="RTL">第二个位置--内容靠右
+    </div>
 
 </div>
 <!--可以控制方向-->
-<p [dir]="dir">
-    bidi works!
+<p [dir]="dir" (dirChange)="dirChange()" style="border: solid 1px #ccc; color: red; padding: 10px">
+    可以动态切换方向
 </p>
 
 <button (click)="switchDir()">切换方向</button>

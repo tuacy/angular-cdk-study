@@ -1,0 +1,9 @@
+<h1>FocusKeyManager使用</h1>
+
+<section class="list-group" (keyup)="onKeyDown($event)">
+    <app-item-focus-option *ngFor="let user of users; index as index"
+                           [item]="user" class="list-group-item"
+    (click)="selectItem(index)">
+        {{user.name}}
+    </app-item-focus-option>
+</section>

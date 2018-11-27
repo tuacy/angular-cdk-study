@@ -1,17 +1,34 @@
+<!-- ActiveDescendantKeyManager使用 -->
+<app-cdk-active-descendant></app-cdk-active-descendant>
 <br>
+<!-- FocusKeyManager使用 -->
+<app-cdk-focus></app-cdk-focus>
 <br>
-<button (click)="testA11y()"> Test A11y!</button>
-<br>
-<br>
-<div #element role="dialog" hidden=true>
-    <label>Sample field</label>
-    <input #elementChild>
-    <label>Sample field</label>
-    <input #elementChild>
-    <label>Sample field</label>
-    <input #elementChild>
-    <label>Sample field</label>
-    <input #elementChild>
-    <label>Sample field</label>
-    <input #elementChild>
+<!-- FocusTrap的使用，- 控制焦点的范围,tab切换焦点的时候不会跳出这个区域 -->
+<div cdkTrapFocus style="border: solid 1px #ccc; padding: 10px">
+    <!-- Tab and Shift + Tab will not leave this element. -->
+    <input placeholder="Email">
+    <input type="password" placeholder="Password" style="margin-left: 10px">
+    <button type="submit" style="margin-left: 10px">Submit</button>
 </div>
+
+<br>
+<!-- cdkFocusRegionStart cdkFocusInitial cdkFocusRegionEnd -->
+<div cdkTrapFocus cdkTrapFocusAutoCapture="true" style="border: solid 1px #ccc; padding: 10px; margin-top: 10px">
+    <input value="1" >
+    <input style="margin-left: 10px" value="2" cdkFocusRegionStart>
+    <input style="margin-left: 10px" value="3" cdkFocusInitial>
+    <input style="margin-left: 10px" value="4" cdkFocusRegionEnd>
+</div>
+<br>
+<!-- FocusTrapFactory -->
+<app-cdk-focus-trap-factory></app-cdk-focus-trap-factory>
+<br>
+<!-- FocusMonitor使用 -->
+<app-cdk-focus-monitor></app-cdk-focus-monitor>
+<br>
+<!-- InteractivityChecker使用 -->
+<app-cdk-interactivity-checker></app-cdk-interactivity-checker>
+<br>
+<!-- LiveAnnouncer使用 -->
+<app-cdk-live-announcer></app-cdk-live-announcer>
