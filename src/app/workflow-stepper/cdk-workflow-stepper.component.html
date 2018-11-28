@@ -1,2 +1,19 @@
 <h1>cdk stepper</h1>
-<app-cdk-customer-stepper></app-cdk-customer-stepper>
+<app-cdk-customer-stepper>
+    <cdk-step [stepControl]="frmStep1" #step1="cdkStep">
+        <ng-template cdkStepLabel>Step1</ng-template>
+        <form #frmStep1="ngForm">
+            <input type="text" name="a" value="a"/>
+        </form>
+        <button cdkStepperPrevious>Prev</button>
+        <button cdkStepperNext>Next</button>
+    </cdk-step>
+    <cdk-step cdkStep #step2="cdkStep">
+        <form #frmStep2="ngForm">
+            <ng-template cdkStepLabel>Step2</ng-template>
+            <input type="text" name="b" value="b"/>
+        </form>
+        <button cdkStepperPrevious>Prev</button>
+        <button cdkStepperNext>Next</button>
+    </cdk-step>
+</app-cdk-customer-stepper>

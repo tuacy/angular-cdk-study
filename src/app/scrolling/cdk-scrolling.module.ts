@@ -8,11 +8,14 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
 import {VirtualScrollDataSourceComponent} from './virtual-scroll-data-source/virtual-scroll-data-source.component';
 import {VirtualScrollHorizontalComponent} from './virtual-scroll-horizontal/virtual-scroll-horizontal.component';
 import {VirtualScrollStrategiesComponent} from './virtual-scroll-strategies/virtual-scroll-strategies.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragScrollingComponent } from './drag-scrolling/drag-scrolling.component';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
+        DragDropModule,
         ScrollingModule,
         CdkScrollingRoutingModule
     ],
@@ -21,7 +24,8 @@ import {VirtualScrollStrategiesComponent} from './virtual-scroll-strategies/virt
         VirtualScrollComponent,
         VirtualScrollDataSourceComponent,
         VirtualScrollHorizontalComponent,
-        VirtualScrollStrategiesComponent
+        VirtualScrollStrategiesComponent,
+        DragScrollingComponent
     ]
 })
 export class CdkScrollingModule {

@@ -1,0 +1,10 @@
+<h1>
+  drag和scrolling结合使用
+</h1>
+<div style="height:100vh">
+  <div #scrollEl cdk-scrollable style="height:400px; overflow-y:scroll">
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+    </div>
+  </div>
+</div>
