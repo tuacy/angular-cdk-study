@@ -16,6 +16,7 @@ import {CdkPlatformModule} from './platform/cdk-platform.module';
 import {CdkObserversModule} from './observers/cdk-observers.module';
 import {CdkDragDropModule} from './drag-drop/cdk-drag-drop.module';
 import {CdkTextFieldModule} from "./text-field/cdk-text-field.module";
+import {CdkWorkflowStepperModule} from "./workflow-stepper/cdk-workflow-stepper.module";
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import {CdkTextFieldModule} from "./text-field/cdk-text-field.module";
         CdkObserversModule,
         CdkDragDropModule,
         CdkTextFieldModule,
+        CdkWorkflowStepperModule,
         AppRoutingModule
     ],
     providers: [],
