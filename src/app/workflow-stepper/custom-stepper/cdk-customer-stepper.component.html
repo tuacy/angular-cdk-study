@@ -1,6 +1,11 @@
-<div *ngFor="let step of _steps; let i = index; let isLast = last">
-
-    <div [style.display]="selectedIndex === i ? 'block' : 'none'">
+<div class="mat-horizontal-content-container">
+    <div *ngFor="let step of _steps; let i = index"
+         class="mat-horizontal-stepper-content"
+         [id]="_getStepContentId(i)"
+         role="tabpanel"
+         [attr.aria-labelledby]="_getStepLabelId(i)"
+         aria-orientation="horizontal"
+         [attr.aria-expanded]="selectedIndex === i">
         <ng-container [ngTemplateOutlet]="step.content"></ng-container>
     </div>
 </div>

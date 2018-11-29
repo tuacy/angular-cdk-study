@@ -5,6 +5,7 @@ import {CdkWorkflowStepperRoutingModule} from './cdk-workflow-stepper-routing.mo
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkCustomerStepperComponent} from './custom-stepper/cdk-customer-stepper.component';
 import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     imports: [

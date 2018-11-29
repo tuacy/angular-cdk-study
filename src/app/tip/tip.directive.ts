@@ -64,10 +64,10 @@ export class TipDirective {
     setPosition() {
         const hostPos = this.el.nativeElement.getBoundingClientRect();
 
-        // tooltip 사이즈와 위치 정보
+        // tooltip
         const tooltipPos = this.tooltip.getBoundingClientRect();
 
-        // getBoundingClientRect 메소드는 viewport에서의 상대적인 위치를 반환한다.
+        // getBoundingClientRect
         const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
         let top, left;
