@@ -1,16 +1,18 @@
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
-    Component, ContentChildren,
-    EventEmitter, OnInit,
-    Output, QueryList,
+    Component,
+    ContentChildren,
+    EventEmitter,
+    Output,
+    QueryList,
     ViewEncapsulation
 } from '@angular/core';
 import {AnimationEvent} from '@angular/animations';
 import {CdkStep, CdkStepper, StepContentPositionState} from '@angular/cdk/stepper';
-import {Subject} from "rxjs";
-import {distinctUntilChanged, takeUntil} from "rxjs/operators";
-import {matStepperAnimations} from "./stepper-animations";
+import {Subject} from 'rxjs';
+import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
+import {matStepperAnimations} from './stepper-animations';
 
 @Component({
     selector: 'app-cdk-customer-stepper',
@@ -21,7 +23,7 @@ import {matStepperAnimations} from "./stepper-animations";
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CdkCustomerStepperComponent extends CdkStepper implements OnInit, AfterContentInit {
+export class CdkCustomerStepperComponent extends CdkStepper implements AfterContentInit {
 
     /** Steps that the stepper holds. */
     @ContentChildren(CdkStep) _steps: QueryList<CdkStep>;
@@ -31,11 +33,7 @@ export class CdkCustomerStepperComponent extends CdkStepper implements OnInit, A
 
     _animationDone = new Subject<AnimationEvent>();
 
-    ngOnInit() {
-    }
-
     ngAfterContentInit() {
-        // this._icons.forEach(({name, templateRef}) => this._iconOverrides[name] = templateRef);
 
         // Mark the component for change detection whenever the content children query changes
         this._steps.changes.pipe(takeUntil(this._destroyed)).subscribe(() => this._stateChanged());

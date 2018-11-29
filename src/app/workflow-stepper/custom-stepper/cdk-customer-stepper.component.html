@@ -5,7 +5,9 @@
          role="tabpanel"
          [attr.aria-labelledby]="_getStepLabelId(i)"
          aria-orientation="horizontal"
-         [attr.aria-expanded]="selectedIndex === i">
+         [attr.aria-expanded]="selectedIndex === i"
+         [@stepTransition]="_getAnimationDirection(i)"
+         (@stepTransition.done)="_animationDone.next($event)">
         <ng-container [ngTemplateOutlet]="step.content"></ng-container>
     </div>
 </div>

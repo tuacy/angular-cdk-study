@@ -17,6 +17,7 @@ import {CdkObserversModule} from './observers/cdk-observers.module';
 import {CdkDragDropModule} from './drag-drop/cdk-drag-drop.module';
 import {CdkTextFieldModule} from "./text-field/cdk-text-field.module";
 import {CdkWorkflowStepperModule} from "./workflow-stepper/cdk-workflow-stepper.module";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -25,9 +26,10 @@ import {CdkWorkflowStepperModule} from "./workflow-stepper/cdk-workflow-stepper.
         TipComponent
     ],
     imports: [
-        BrowserModule,
         RouterModule,
         FormsModule,
+        BrowserModule,
+        BrowserAnimationsModule,
         CdkCoercionModule,
         CdkLayoutModule,
         CdkKeyCodesModule,
