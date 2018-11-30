@@ -1,0 +1,24 @@
+.yx-step-icon {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.yx-step-icon-content {
+  // Use absolute positioning to center the content, because it works better with text.
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.yx-step-label {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 50px;
+  vertical-align: middle;
+}

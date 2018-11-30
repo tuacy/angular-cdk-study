@@ -3,9 +3,10 @@ import {CommonModule} from '@angular/common';
 import {CdkWorkflowStepperComponent} from './cdk-workflow-stepper.component';
 import {CdkWorkflowStepperRoutingModule} from './cdk-workflow-stepper-routing.module';
 import {CdkStepperModule} from '@angular/cdk/stepper';
-import {CdkCustomerStepperComponent} from './custom-stepper/cdk-customer-stepper.component';
+import {StepperComponent} from './stepper/stepper.component';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { StepperHeaderComponent } from './stepper/stepper-header.component';
 
 @NgModule({
     imports: [
@@ -14,7 +15,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         CdkStepperModule,
         CdkWorkflowStepperRoutingModule
     ],
-    declarations: [CdkWorkflowStepperComponent, CdkCustomerStepperComponent]
+    declarations: [CdkWorkflowStepperComponent, StepperComponent, StepperHeaderComponent]
 })
 export class CdkWorkflowStepperModule {
 }

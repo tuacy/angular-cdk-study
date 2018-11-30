@@ -12,18 +12,18 @@ import {AnimationEvent} from '@angular/animations';
 import {CdkStep, CdkStepper, StepContentPositionState} from '@angular/cdk/stepper';
 import {Subject} from 'rxjs';
 import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
-import {matStepperAnimations} from './stepper-animations';
+import {yxStepperAnimations} from './stepper-animations';
 
 @Component({
-    selector: 'app-cdk-customer-stepper',
-    templateUrl: './cdk-customer-stepper.component.html',
-    styleUrls: ['./cdk-customer-stepper.component.less'],
-    providers: [{provide: CdkStepper, useExisting: CdkCustomerStepperComponent}],
-    animations: [matStepperAnimations.horizontalStepTransition],
+    selector: 'yx-stepper',
+    templateUrl: './stepper.component.html',
+    styleUrls: ['./stepper.component.less'],
+    providers: [{provide: CdkStepper, useExisting: StepperComponent}],
+    animations: [yxStepperAnimations.horizontalStepTransition],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CdkCustomerStepperComponent extends CdkStepper implements AfterContentInit {
+export class StepperComponent extends CdkStepper implements AfterContentInit {
 
     /** Steps that the stepper holds. */
     @ContentChildren(CdkStep) _steps: QueryList<CdkStep>;

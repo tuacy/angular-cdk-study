@@ -1,0 +1,34 @@
+<!-- 每个步骤用于显示标号，当然了你也可以根据不同的case显示不同的图标 -->
+<div class="yx-step-icon" [ngSwitch]="state">
+    <div class="yx-step-icon-content">
+        <!-- number -->
+        <ng-container *ngSwitchCase="'number'">
+            <span>{{index + 1}}</span>
+        </ng-container>
+        <!-- edit -->
+        <ng-container *ngSwitchCase="'edit'">
+            <span>{{index + 1}}</span>
+        </ng-container>
+        <!-- done -->
+        <ng-container *ngSwitchCase="'done'">
+            <span>{{index + 1}}</span>
+        </ng-container>
+        <!-- error -->
+        <ng-container *ngSwitchCase="'error'">
+            <span>{{index + 1}}</span>
+        </ng-container>
+        <!-- Custom state. -->
+        <ng-container *ngSwitchDefault>
+            <span>{{index + 1}}</span>
+        </ng-container>
+    </div>
+</div>
+
+<!-- 每个步骤的label内容 -->
+<div class="yx-step-label">
+    <!-- If there is a label template, use it. -->
+    <ng-container *ngIf="_templateLabel()" [ngTemplateOutlet]="_templateLabel()!.template"></ng-container>
+    <!-- If there is no label template, fall back to the text label. -->
+    <div class="mat-step-text-label" *ngIf="_stringLabel()">{{label}}</div>
+</div>
+

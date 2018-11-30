@@ -18,7 +18,7 @@ import {
  * Animations used by the Material steppers.
  * @docs-private
  */
-export const matStepperAnimations: {
+export const yxStepperAnimations: {
     readonly horizontalStepTransition: AnimationTriggerMetadata;
     readonly verticalStepTransition: AnimationTriggerMetadata;
 } = {

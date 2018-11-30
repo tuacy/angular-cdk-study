@@ -1,0 +1,25 @@
+.yx-stepper-header-container {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.yx-stepper-header {
+  display: flex;
+  height: 24px;
+  overflow: hidden;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.yx-content-container {
+  overflow: hidden;
+}
+
+/**
+保证值显示一个step
+ */
+.yx-stepper-content[aria-expanded='false'] {
+  height: 0;
+  overflow: hidden;
+}
