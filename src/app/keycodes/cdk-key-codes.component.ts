@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {DELETE, ENTER, MAC_ENTER, TAB} from "@angular/cdk/keycodes";
+import {DELETE, ENTER, hasModifierKey, MAC_ENTER, TAB} from '@angular/cdk/keycodes';
 
 @Component({
     selector: 'app-key-codes',
@@ -9,7 +9,17 @@ import {DELETE, ENTER, MAC_ENTER, TAB} from "@angular/cdk/keycodes";
 export class CdkKeyCodesComponent {
 
     onKeyDown(event) {
+        /**
+         * 组合按键判断(如果按下的是 ctr按键 + 其他的按键的时候 返回true)
+         */
+        console.log(hasModifierKey(event, 'ctrlKey'));
+        /**
+         * 打印按键值
+         */
         console.log(event.keyCode);
+        /**
+         * 通过 cdk 判断按键类型
+         */
         switch (event.keyCode) {
             case MAC_ENTER:
             case ENTER:
