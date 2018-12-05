@@ -1,18 +1,64 @@
-import {Component, QueryList, ViewChildren} from '@angular/core';
-import {ComponentPortal, Portal, TemplatePortalDirective} from '@angular/cdk/portal';
+import {
+    AfterViewInit,
+    ApplicationRef,
+    Component, ComponentFactoryResolver,
+    ElementRef,
+    Inject,
+    Injector,
+    QueryList,
+    TemplateRef, ViewChild,
+    ViewChildren,
+    ViewContainerRef
+} from '@angular/core';
+import {ComponentPortal, DomPortalOutlet, Portal, TemplatePortal, TemplatePortalDirective} from '@angular/cdk/portal';
 import {PortalChildComponent} from './portal-child-component/portal-child.component';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
     selector: 'app-cdk-portal',
     templateUrl: './cdk-portal.component.html',
     styleUrls: ['./cdk-portal.component.less']
 })
-export class CdkPortalComponent {
+export class CdkPortalComponent implements AfterViewInit {
 
-    @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
+    @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<TemplatePortal<any>>;
+    @ViewChild('outOfApp') templateOutOfApp: TemplateRef<any>;
+    private _domPortalOutletOutOfApp: DomPortalOutlet;
     selectedPortal;
 
+    ctx = {
+        $implicit: {
+            name: 'John',
+            age: 34
+        },
+        location: 'USA'
+    };
+
+
+    constructor(@Inject(DOCUMENT) private document: any,
+                private elementRef: ElementRef,
+                private injector: Injector,
+                private appRef: ApplicationRef,
+                private viewContainerRef: ViewContainerRef,
+                private componentFactoryResolver: ComponentFactoryResolver) {
+    }
+
+    ngAfterViewInit(): void {
+        /**
+         * 把内容放置在 <app-root标签之外>
+         */
+        const element = this.document.createElement('div');
+        this.document.body.appendChild(element);
+        this._domPortalOutletOutOfApp = new DomPortalOutlet(element, this.componentFactoryResolver, this.appRef, this.injector);
+        const templatePortal = new TemplatePortal(
+            this.templateOutOfApp,
+            this.viewContainerRef
+        );
+        this._domPortalOutletOutOfApp.attach(templatePortal);
+    }
+
     cdkPortalFirst() {
+        this.templatePortals.first.context = this.ctx;
         this.selectedPortal = this.templatePortals.first;
     }
 
@@ -25,6 +71,6 @@ export class CdkPortalComponent {
     }
 
     onPortalAttached() {
-        console.log("cdkPortalOutlet上有组件attach上来了");
+        console.log('cdkPortalOutlet上有组件attach上来了');
     }
 }

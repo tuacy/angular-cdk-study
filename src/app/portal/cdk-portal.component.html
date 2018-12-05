@@ -6,6 +6,8 @@
 <br>
 <!-- Portal显示的位置 -->
 <div class="demo-portal-host">
+    <!-- cdkPortalOutlet来指定动态内容需要放置的地方，参数是selectedPortal他是一个ComponentPortal或者TemplatePortal
+     显示的内容会根据selectedPortal的改变而改变-->
     <ng-template cdkPortalHost [cdkPortalOutlet]="selectedPortal" (attached)="onPortalAttached()"></ng-template>
 </div>
 <br>
@@ -18,10 +20,14 @@
 <button style="margin-left: 10px" (click)="cdkPortalComponent()">
     portal组件
 </button>
-<ng-template cdkPortal>
-    <h2>ng-template 指定的内容(first)</h2>
+<ng-template cdkPortal let-obj let-location="location">
+    <h2>ng-template 指定的内容(first) 外部参数 {{obj.age}}</h2>
 </ng-template>
 
 <div *cdkPortal>
     <h2>ng-template 指定的内容(last)</h2>
 </div>
+
+<ng-template #outOfApp>
+    <h1>这部分内容在app-root标签之外</h1>
+</ng-template>
