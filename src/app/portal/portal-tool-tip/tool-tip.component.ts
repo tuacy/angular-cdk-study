@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, TemplateRef, ViewChild} from '@angular/core';
 
 @Component({
     template: `
@@ -17,8 +17,5 @@ import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
     ]
 })
 export class ToolTipComponent {
-
-
     @ViewChild('tooltip') tooltip: TemplateRef<any>;
-
 }

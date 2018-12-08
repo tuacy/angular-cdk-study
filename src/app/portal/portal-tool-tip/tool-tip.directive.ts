@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {DomPortalHost, TemplatePortal} from "@angular/cdk/portal";
 import {ToolTipComponent} from "./tool-tip.component";
+import {ComponentRef} from "@angular/core";
 
 @Directive({
     selector: '[appToolTip]'
@@ -20,16 +21,22 @@ export class ToolTipDirective implements OnInit {
     @Input('tooltipText')
     tooltipText: string;
 
-    tooltipPortalHost: DomPortalHost;
-    templatePortal: TemplatePortal<any>;
+    private _tooltipPortalHost: DomPortalHost;
+    private _templatePortal: TemplatePortal<any>;
 
     @HostBinding('style.position') position = 'relative';
 
+    /**
+     * 鼠标移入的时候显示
+     */
     @HostListener('mouseenter')
     onMouseEnter() {
         this.show();
     }
 
+    /**
+     * 鼠标移出的时候隐藏
+     */
     @HostListener('mouseleave')
     onMouseLeave() {
         this.hide();
@@ -49,7 +56,7 @@ export class ToolTipDirective implements OnInit {
     }
 
     private createContainerTemplate() {
-        this.tooltipPortalHost = new DomPortalHost(
+        this._tooltipPortalHost = new DomPortalHost(
             (this.elementRef.nativeElement as HTMLElement),
             this.componentFactoryResolver,
             this.appRef,
@@ -57,27 +64,31 @@ export class ToolTipDirective implements OnInit {
         );
 
         const tooltipComponent = this.componentFactoryResolver.resolveComponentFactory(ToolTipComponent);
-        const tooltipComponentRef = tooltipComponent.create(this.injector);
+        const tooltipComponentRef: ComponentRef<ToolTipComponent> = tooltipComponent.create(this.injector);
 
-        this.templatePortal = new TemplatePortal(
+        this._templatePortal = new TemplatePortal(
             tooltipComponentRef.instance.tooltip,
             this.viewContainerRef,
             {
-                // Pass the tooltip text as $implicit so it's the
-                // default variable for use within the templateRef
                 $implicit: this.tooltipText,
             }
         );
     }
 
+    /**
+     * 显示
+     */
     private show() {
-        if (!this.templatePortal.isAttached) {
-            this.tooltipPortalHost.attach(this.templatePortal);
+        if (!this._templatePortal.isAttached) {
+            this._tooltipPortalHost.attach(this._templatePortal);
         }
     }
 
+    /**
+     * 隐藏
+     */
     private hide() {
-        this.tooltipPortalHost.detach();
+        this._tooltipPortalHost.detach();
     }
 
 }

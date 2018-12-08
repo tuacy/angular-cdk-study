@@ -20,10 +20,12 @@
 <button style="margin-left: 10px" (click)="cdkPortalComponent()">
     portal组件
 </button>
-<ng-template cdkPortal let-obj let-location="location">
+
+<!-- #divPortal="cdkPortal",CdkPortal指令有exportAs: 'cdkPortal'元数据，所以我们才可以这么写来获取，来获取CdkPortal对象  -->
+<ng-template #templatePortal="cdkPortal" cdkPortal let-obj let-location="location">
     <h2>ng-template 指定的内容(first) 外部参数 {{obj.age}}</h2>
 </ng-template>
-
+<!-- 不建议在div上添加*cdkPortal指令，完全可以用ng-template代替 -->
 <div *cdkPortal>
     <h2>ng-template 指定的内容(last)</h2>
 </div>

@@ -14,15 +14,15 @@ import {DomPortalHost, TemplatePortal} from "@angular/cdk/portal";
 @Component({
     selector: 'app-portal-template',
     template: `
-        <ng-template #testTemplate let-name>
-            <div>User {{ name }}</div>
+        <!-- 我们定义一个ng-template节点，并且需要传递一个参数 -->
+        <ng-template #portalTemplate let-data>
+            <div>参数: {{ data }}</div>
         </ng-template>
     `
 })
 export class PortalTemplateComponent implements OnInit {
 
-    private portalHost: DomPortalHost;
-    @ViewChild('testTemplate') testTemplate: TemplateRef<any>;
+    @ViewChild('portalTemplate') testTemplate: TemplateRef<any>;
 
     constructor(
         private elementRef: ElementRef,
@@ -35,20 +35,23 @@ export class PortalTemplateComponent implements OnInit {
 
     ngOnInit() {
 
-        this.portalHost = new DomPortalHost(
+        // 1. DomPortalHost
+        const portalHost = new DomPortalHost(
             this.elementRef.nativeElement as HTMLElement,
             this.componentFactoryResolver,
             this.appRef,
             this.injector
         );
+        // 2. TemplatePortal
         const templatePortal = new TemplatePortal(
             this.testTemplate,
             this.viewContainerRef,
             {
-                $implicit: "ng template 传递数据",
+                $implicit: "我是传递进来的数据",
             }
         );
-        this.portalHost.attach(templatePortal);
+        // 3. attach
+        portalHost.attach(templatePortal);
     }
 
 }
