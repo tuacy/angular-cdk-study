@@ -1,22 +1,18 @@
 import {
     AfterViewInit,
     ApplicationRef,
-    Component, ComponentFactoryResolver,
+    Component,
+    ComponentFactoryResolver,
     ElementRef,
     Inject,
     Injector,
     QueryList,
-    TemplateRef, ViewChild,
+    TemplateRef,
+    ViewChild,
     ViewChildren,
     ViewContainerRef
 } from '@angular/core';
-import {
-    CdkPortal,
-    ComponentPortal,
-    DomPortalOutlet,
-    TemplatePortal,
-    TemplatePortalDirective
-} from '@angular/cdk/portal';
+import {ComponentPortal, DomPortalOutlet, TemplatePortal, TemplatePortalDirective} from '@angular/cdk/portal';
 import {PortalChildComponent} from './portal-child-component/portal-child.component';
 import {DOCUMENT} from '@angular/common';
 
@@ -34,6 +30,7 @@ export class CdkPortalComponent implements AfterViewInit {
 
     @ViewChild('outOfApp') templateOutOfApp: TemplateRef<any>;
     private _domPortalOutletOutOfApp: DomPortalOutlet;
+
     selectedPortal;
 
     ctx = {

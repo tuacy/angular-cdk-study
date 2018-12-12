@@ -5,11 +5,13 @@ import {
     ViewChild,
     ViewChildren,
     ViewContainerRef,
-    ViewEncapsulation
+    ViewEncapsulation,
+    Inject
 } from '@angular/core';
 import {Overlay, OverlayConfig, OverlayRef} from "@angular/cdk/overlay";
 import {ComponentPortal, Portal, TemplatePortalDirective} from "@angular/cdk/portal";
 import {OverlayPanelComponent} from "./panel/overlay-panel.component";
+import {DOCUMENT} from '@angular/common';
 
 @Component({
     selector: 'app-cdk-overlay',
@@ -20,18 +22,22 @@ import {OverlayPanelComponent} from "./panel/overlay-panel.component";
 })
 export class CdkOverlayComponent {
 
+
     isMenuOpen = false;
     globalOverlayPosition = 0;
     actionMenuItemList = ['第一项item', '第二项item'];
     private _overlayTemplateRef: OverlayRef;
     private _overlayConnectRef: OverlayRef;
 
+    @ViewChild('videoElementRef') videoElementRef: ElementRef;
     @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
     @ViewChild('connectComponentOrigin') _overlayConnectComponentOrigin: ElementRef;
     @ViewChild('connectTemplateOrigin') _overlayConnectTemplateOrigin: ElementRef;
     @ViewChild('overlayConnectTemplate') _overlayOriginTemplateDirective: TemplatePortalDirective;
 
-    constructor(public overlay: Overlay, public viewContainerRef: ViewContainerRef) {
+    constructor(public overlay: Overlay
+        , public viewContainerRef: ViewContainerRef
+        , @Inject(DOCUMENT) public _document: any) {
     }
 
     /**
@@ -51,6 +57,12 @@ export class CdkOverlayComponent {
             overlayRef.dispose();
         });
         overlayRef.attach(new ComponentPortal(OverlayPanelComponent, this.viewContainerRef));
+
+        overlayRef.keydownEvents().subscribe((event: KeyboardEvent) => {
+            console.log('aaaaaaaaaaaaaaaa');
+            console.log(overlayRef._keydownEventSubscriptions + ' times');
+            console.log(event);
+        });
     }
 
     /**
