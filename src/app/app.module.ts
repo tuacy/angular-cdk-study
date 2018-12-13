@@ -18,6 +18,7 @@ import {CdkDragDropModule} from './drag-drop/cdk-drag-drop.module';
 import {CdkTextFieldModule} from "./text-field/cdk-text-field.module";
 import {CdkWorkflowStepperModule} from "./workflow-stepper/cdk-workflow-stepper.module";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FullscreenOverlayContainer, OverlayContainer} from '@angular/cdk/overlay';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         CdkWorkflowStepperModule,
         AppRoutingModule
     ],
-    providers: [],
+    providers: [
+        {provide: OverlayContainer, useClass: FullscreenOverlayContainer},
+
+],
     bootstrap: [AppComponent]
 })
 export class AppModule {

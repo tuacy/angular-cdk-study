@@ -41,23 +41,25 @@ export class CdkOverlayComponent {
     }
 
     /**
-     * overlay 在整个屏幕的中间
+     * overlay 在整个屏幕的中间显示
      */
     showOverlayGlobalPanelCenter() {
+        // config: OverlayConfig overlay的配置，配置显示位置，和滑动策略
         const config = new OverlayConfig();
         config.positionStrategy = this.overlay.position()
-            .global()
-            .centerHorizontally()
-            .centerVertically();
-        this.globalOverlayPosition += 30;
-        config.hasBackdrop = true;
-        const overlayRef = this.overlay.create(config);
+            .global() // 全局显示
+            .centerHorizontally() // 水平居中
+            .centerVertically(); // 垂直居中
+        config.hasBackdrop = true; // 设置overlay后面有一层背景, 当然你也可以设置backdropClass 来设置这层背景的class
+        const overlayRef = this.overlay.create(config); // OverlayRef, overlay层
         overlayRef.backdropClick().subscribe(() => {
             // 点击了backdrop背景
             overlayRef.dispose();
         });
+        // OverlayPanelComponent是动态组件
+        // 创建一个ComponentPortal，attach到OverlayRef，这个时候我们这个overlay层就显示出来了。
         overlayRef.attach(new ComponentPortal(OverlayPanelComponent, this.viewContainerRef));
-
+        // 监听overlayRef上的键盘按键事件
         overlayRef.keydownEvents().subscribe((event: KeyboardEvent) => {
             console.log(overlayRef._keydownEventSubscriptions + ' times');
             console.log(event);
@@ -65,7 +67,7 @@ export class CdkOverlayComponent {
     }
 
     /**
-     * overlay 在整个屏幕位置，自己控制 left top
+     * overlay 在整个屏幕位置，自己控制位置
      */
     showOverlayGlobalPanelPosition() {
         const config = new OverlayConfig();
@@ -119,7 +121,7 @@ export class CdkOverlayComponent {
                 offsetX: 0,
                 offsetY: 0
             }]);
-        // strategy.withLockedPosition(true);
+        strategy.withLockedPosition(true);
         const config = new OverlayConfig({positionStrategy: strategy});
         config.scrollStrategy = this.overlay.scrollStrategies.reposition();
         this._overlayConnectRef = this.overlay.create(config);
