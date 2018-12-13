@@ -1,17 +1,7 @@
-import {
-    Component,
-    ElementRef,
-    QueryList,
-    ViewChild,
-    ViewChildren,
-    ViewContainerRef,
-    ViewEncapsulation,
-    Inject
-} from '@angular/core';
-import {Overlay, OverlayConfig, OverlayRef} from "@angular/cdk/overlay";
-import {ComponentPortal, Portal, TemplatePortalDirective} from "@angular/cdk/portal";
-import {OverlayPanelComponent} from "./panel/overlay-panel.component";
-import {DOCUMENT} from '@angular/common';
+import {Component, ElementRef, ViewChild, ViewContainerRef, ViewEncapsulation} from '@angular/core';
+import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
+import {ComponentPortal, TemplatePortalDirective} from '@angular/cdk/portal';
+import {OverlayPanelComponent} from './panel/overlay-panel.component';
 
 @Component({
     selector: 'app-cdk-overlay',
@@ -29,15 +19,13 @@ export class CdkOverlayComponent {
     private _overlayTemplateRef: OverlayRef;
     private _overlayConnectRef: OverlayRef;
 
-    @ViewChild('videoElementRef') videoElementRef: ElementRef;
     @ViewChild('overlayGlobalTemplate') templateGlobalPortals: TemplatePortalDirective;
     @ViewChild('connectComponentOrigin') _overlayConnectComponentOrigin: ElementRef;
     @ViewChild('connectTemplateOrigin') _overlayConnectTemplateOrigin: ElementRef;
     @ViewChild('overlayConnectTemplate') _overlayOriginTemplateDirective: TemplatePortalDirective;
 
     constructor(public overlay: Overlay
-        , public viewContainerRef: ViewContainerRef
-        , @Inject(DOCUMENT) public _document: any) {
+        , public viewContainerRef: ViewContainerRef) {
     }
 
     /**
@@ -150,7 +138,7 @@ export class CdkOverlayComponent {
             }]);
         const config = new OverlayConfig({positionStrategy: strategy});
         config.hasBackdrop = true;
-        config.backdropClass = "backdrop-with-out";
+        config.backdropClass = 'backdrop-with-out';
         const overlayRef = this.overlay.create(config);
         overlayRef.backdropClick().subscribe(() => {
             overlayRef.dispose();

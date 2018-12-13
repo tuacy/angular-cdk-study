@@ -16,7 +16,9 @@
     </ng-template>
 
     <!-- 依附某个组件或者template显示 -->
-    <button style="margin-left: 10px" #connectComponentOrigin (click)="showOverlayPanelConnectComponent()">
+    <button style="margin-left: 10px" #connectComponentOrigin
+            (mouseenter)="showOverlayPanelConnectComponent()"
+            (mouseleave)="dismissOverlayPanelConnectComponent()">
         overlay connect 组件显示
     </button>
 
