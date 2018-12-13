@@ -30,7 +30,7 @@ export class CdkOverlayComponent {
     private _overlayConnectRef: OverlayRef;
 
     @ViewChild('videoElementRef') videoElementRef: ElementRef;
-    @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
+    @ViewChild('overlayGlobalTemplate') templateGlobalPortals: TemplatePortalDirective;
     @ViewChild('connectComponentOrigin') _overlayConnectComponentOrigin: ElementRef;
     @ViewChild('connectTemplateOrigin') _overlayConnectTemplateOrigin: ElementRef;
     @ViewChild('overlayConnectTemplate') _overlayOriginTemplateDirective: TemplatePortalDirective;
@@ -95,7 +95,7 @@ export class CdkOverlayComponent {
             .top(`${this.globalOverlayPosition}px`);
         this.globalOverlayPosition += 30;
         this._overlayTemplateRef = this.overlay.create(config);
-        this._overlayTemplateRef.attach(this.templatePortals.first);
+        this._overlayTemplateRef.attach(this.templateGlobalPortals);
     }
 
     /**
