@@ -59,7 +59,6 @@ export class CdkOverlayComponent {
         overlayRef.attach(new ComponentPortal(OverlayPanelComponent, this.viewContainerRef));
 
         overlayRef.keydownEvents().subscribe((event: KeyboardEvent) => {
-            console.log('aaaaaaaaaaaaaaaa');
             console.log(overlayRef._keydownEventSubscriptions + ' times');
             console.log(event);
         });
@@ -120,7 +119,9 @@ export class CdkOverlayComponent {
                 offsetX: 0,
                 offsetY: 0
             }]);
+        // strategy.withLockedPosition(true);
         const config = new OverlayConfig({positionStrategy: strategy});
+        config.scrollStrategy = this.overlay.scrollStrategies.reposition();
         this._overlayConnectRef = this.overlay.create(config);
         this._overlayConnectRef.attach(new ComponentPortal(OverlayPanelComponent, this.viewContainerRef));
     }
