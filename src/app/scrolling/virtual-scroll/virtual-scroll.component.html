@@ -1,7 +1,7 @@
 <!-- <cdk-.-scroll-viewport> 在展示大量数据的时候性能更好 -->
 <div>
     <h1>cdk-virtual-scroll-viewport组件使用</h1>
-    <cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport">
+    <cdk-virtual-scroll-viewport #scrollComponent [itemSize]="18 * 7" class="example-viewport">
         <div *cdkVirtualFor="let item of items;
                        let index = index;
                        let count = count;
@@ -18,5 +18,9 @@
             <div class="example-item-detail">Odd: {{odd ? 'Yes' : 'No'}}</div>
         </div>
     </cdk-virtual-scroll-viewport>
+
+    <button style="margin-top: 8px; margin-bottom: 8px; background-color: #007bff; color: red" (click)="onButtonClick()">
+        点击跳转到第10个item
+    </button>
 </div>
 
