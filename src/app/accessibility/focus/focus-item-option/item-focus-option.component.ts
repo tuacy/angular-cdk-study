@@ -3,7 +3,9 @@ import {FocusableOption, FocusOrigin} from "@angular/cdk/a11y";
 
 @Component({
     selector: 'app-item-focus-option',
-    templateUrl: './item-focus-option.component.html',
+    template: `
+        <ng-content></ng-content>
+    `,
     styles: [
             `:host:focus {
             background: lightblue;
