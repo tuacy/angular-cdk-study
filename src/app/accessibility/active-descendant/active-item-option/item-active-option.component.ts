@@ -3,8 +3,21 @@ import {Highlightable} from "@angular/cdk/a11y";
 
 @Component({
     selector: 'app-item-active-option',
-    templateUrl: './item-active-option.component.html',
-    styleUrls: ['./item-active-option.component.less']
+    template: `
+        <div [class.disabled]="disabled">
+            <ng-content></ng-content>
+        </div>
+    `,
+    styles: [`
+        .active {
+            background-color: lightblue;
+            color: #fff;
+        }
+
+        .disabled {
+            opacity: 0.3;
+        }
+    `]
 })
 export class ItemActiveOptionComponent implements Highlightable {
     @Input() item;
