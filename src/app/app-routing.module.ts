@@ -15,6 +15,7 @@ import {CdkObserversModule} from './observers/cdk-observers.module';
 import {CdkDragDropModule} from './drag-drop/cdk-drag-drop.module';
 import {CdkTextFieldModule} from "./text-field/cdk-text-field.module";
 import {CdkWorkflowStepperModule} from "./workflow-stepper/cdk-workflow-stepper.module";
+import {CdkBaseTableModule} from './table/cdk-base-table.module';
 
 const appRoutes: Routes = [
     {
@@ -53,6 +54,9 @@ const appRoutes: Routes = [
     }, {
         path: 'stepper',
         loadChildren: () => CdkWorkflowStepperModule
+    }, {
+        path: 'table',
+        loadChildren: () => CdkBaseTableModule
     }, {
         path: 'textField',
         loadChildren: () => CdkTextFieldModule
