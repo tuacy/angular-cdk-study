@@ -13,19 +13,15 @@ export class CustomerDataSource extends DataSource<string | undefined>{
     connect(collectionViewer: CollectionViewer): Observable<(string | undefined)[]> {
         this.subscription.add(collectionViewer.viewChange.subscribe(range => {
             const startPage = this.getPageForIndex(range.start);
-            console.log('startPage = ' + startPage);
             const endPage = this.getPageForIndex(range.end - 1);
-            console.log('endPage = ' + endPage);
             for (let i = startPage; i <= endPage; i++) {
                 this.fetchPage(i);
             }
         }));
-        console.log('connect');
         return this.dataStream;
     }
 
     disconnect(): void {
-        console.log('disconnect');
         this.subscription.unsubscribe();
     }
 
